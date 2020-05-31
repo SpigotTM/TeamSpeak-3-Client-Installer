@@ -2,7 +2,7 @@
 
 INSTALLER_VERSION="1.0.1"
 TS3CLIENT_VERSION="3.5.3"
-TS3CLIENT_LOGO="https://dl.arrow-systems.de/logo.png"
+TS3CLIENT_LOGO="https://dl.arrow-systems.de/github/teamspeak-3-client-installer/logo.png"
 
 if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root!"
