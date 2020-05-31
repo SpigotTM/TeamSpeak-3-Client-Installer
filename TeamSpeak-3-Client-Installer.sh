@@ -54,20 +54,20 @@ clear
 	echo "Create ts3client.desktop"
 	touch ts3client.desktop
 
-	echo "[Desktop Entry]
-	Name=Teamspeak 3 Client
-	VERSION=$TS3CLIENT_VERSION
-	GenericName=TeamSpeak3
-	Comment=Speak with friends
-	Comment[de]=Spreche mit Freunden
-	Exec=/opt/teamspeak/ts3client/ts3client_runscript.sh
-	Terminal=false
-	X-MultipleArgs=false
-	Type=Application
-	Icon=/opt/teamspeak/ts3client/logo.png
-	Categories=Network;
-	StartupWMClass=TeamSpeak 3
-	StartupNotify=true" > ts3client.desktop
+echo "[Desktop Entry]
+Name=Teamspeak 3 Client
+VERSION=$TS3CLIENT_VERSION
+GenericName=TeamSpeak3
+Comment=Speak with friends
+Comment[de]=Spreche mit Freunden
+Exec=/opt/teamspeak/ts3client/ts3client_runscript.sh
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=/opt/teamspeak/ts3client/logo.png
+Categories=Network;
+StartupWMClass=TeamSpeak 3
+StartupNotify=true" > ts3client.desktop
 
 	sleep 2
 	clear
