@@ -5,5 +5,5 @@ Run this installer with root
 #
 Copy paste commands
 ```
-wget https://www.github.com/Razuuu/TeamSpeak-3-Client-Installer/TeamSpeak-3-Client-Installer.sh && chmod +x TeamSpeak-3-Client-Installer.sh && ./TeamSpeak-3-Client-Installer.sh
+wget https://raw.githubusercontent.com/Razuuu/TeamSpeak-3-Client-Installer/master/TeamSpeak-3-Client-Installer.sh && chmod +x TeamSpeak-3-Client-Installer.sh && ./TeamSpeak-3-Client-Installer.sh
 ```
