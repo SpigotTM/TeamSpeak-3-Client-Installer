@@ -1,5 +1,5 @@
 # TeamSpeak-3-Client-Installer
-Unofficial TeamSpeak 3 Client Installer
+Unofficial TeamSpeak 3 Client Installer for Version 3.5.3
 #
 Run this installer with root
 #
