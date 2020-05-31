@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INSTALLER_VERSION="1.0.0"
+INSTALLER_VERSION="1.0.1"
 TS3CLIENT_VERSION="3.5.3"
 TS3CLIENT_LOGO="https://dl.arrow-systems.de/logo.png"
 
