@@ -113,8 +113,8 @@ StartupNotify=true" > ts3client.desktop
 	clear
 
 # End
-echo "TeamSpeak 3 Client Version $TS3CLIENT_VERSION successfully installed at location"
-echo "/opt/teamspeak/ts3client/"
+echo "TeamSpeak 3 Client Version $TS3CLIENT_VERSION successfully"
+echo "installed at location: /opt/teamspeak/ts3client/"
 echo
 sleep 2
 
@@ -125,6 +125,6 @@ echo
 sleep 2
 
 echo "Script by Razuuu (https://www.github.com/Razuuu)"
-echo "Thank you for using this Installer!"
+echo "Thank you for using this Installer! (v$INSTALLER_VERSION"
 
 exit 0
