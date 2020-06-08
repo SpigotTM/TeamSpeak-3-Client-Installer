@@ -114,7 +114,11 @@ StartupNotify=true" > ts3client-$TS3CLIENT_VERSION.desktop
 	fi
 	# if shit stop 
 
-	mv ./TeamSpeak3-Client-linux_amd64 /opt/teamspeak/client/3/$TS3CLIENT_VERSION/
+	# fix FUCKING not changing folder
+	mkdir -p $TS3CLIENT_VERSION
+	mv ./TeamSpeak3-Client-linux_amd64/* ./$TS3CLIENT_VERSION/
+	
+	mv ./TS3CLIENT_VERSION/* /opt/teamspeak/client/3/$TS3CLIENT_VERSION/
 	mv ts3client-$TS3CLIENT_VERSION.desktop /usr/share/applications/ts3client-$TS3CLIENT_VERSION.desktop
 
 	sleep 2
