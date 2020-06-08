@@ -136,6 +136,6 @@ echo
 sleep 2
 
 echo "Script by Razuuu (https://www.github.com/Razuuu)"
-echo "Thank you for using this Installer! (v$INSTALLER_VERSION)"n>.desktop
+echo "Thank you for using this Installer! (v$INSTALLER_VERSION)"
 
 exit 0
