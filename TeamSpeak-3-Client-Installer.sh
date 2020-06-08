@@ -87,24 +87,34 @@ StartupNotify=true" > ts3client-$TS3CLIENT_VERSION.desktop
 	sleep 2
 	clear
 
-	# Copy files to /opt/teamspeak/ts3client/<ts3client_version>/ and /usr/share/applications/ts3client-<ts3client_version>.desktop
-	echo "Move TeamSpeak3-Client-linux_amd64 to /opt/teamspeak/ts3client/$TS3CLIENT_VERSION/"
+	# Copy files to /opt/teamspeak/client/3/<ts3client_version>/ and /usr/share/applications/ts3client-<ts3client_version>.desktop
+	echo "Move TeamSpeak3-Client-linux_amd64 to /opt/teamspeak/client/3/$TS3CLIENT_VERSION/"
 	echo "and ts3client-$TS3CLIENT_VERSION.desktop to /usr/share/applications/ts3client-$TS3CLIENT_VERSION.desktop"
 	sleep 3
 
+	# if shit start
 	if [ ! -d /opt/teamspeak/ ]; then
 		mkdir -p /opt/teamspeak/
 	fi
 	
-	if [ ! -d /opt/teamspeak/ts3client/$TS3CLIENT_VERSION/ ]; then
-		mkdir -p /opt/teamspeak/ts3client/$TS3CLIENT_VERSION/
+	if [ ! -d /opt/teamspeak/client/ ]; then
+		mkdir -p /opt/teamspeak/client/
+	fi
+	
+	if [ ! -d /opt/teamspeak/client/3/ ]; then
+		mkdir -p /opt/teamspeak/client/3/
+	fi
+	
+	if [ ! -d /opt/teamspeak/client/3/$TS3CLIENT_VERSION/ ]; then
+		mkdir -p /opt/teamspeak/client/3/$TS3CLIENT_VERSION/
 	fi
 
-	if [ -f /usr/share/applications/ts3client-$TS3CLIENT_VERSION.desktop ] ; then
+	if [ -f /usr/share/applications/ts3client-$TS3CLIENT_VERSION.desktop ]; then
 		rm /usr/share/applications/ts3client-$TS3CLIENT_VERSION.desktop
 	fi
+	# if shit stop 
 
-	mv ./TeamSpeak3-Client-linux_amd64 /opt/teamspeak/ts3client/$TS3CLIENT_VERSION/
+	mv ./TeamSpeak3-Client-linux_amd64 /opt/teamspeak/client/3/$TS3CLIENT_VERSION/
 	mv ts3client-$TS3CLIENT_VERSION.desktop /usr/share/applications/ts3client-$TS3CLIENT_VERSION.desktop
 
 	sleep 2
@@ -113,7 +123,7 @@ StartupNotify=true" > ts3client-$TS3CLIENT_VERSION.desktop
 	# Give Folder full rights
 	echo "Give folder 777 rights to execute it from a non-root-user"
 	sleep 3
-	chmod -R 777 /opt/teamspeak/ts3client/$TS3CLIENT_VERSION/
+	chmod -R 777 /opt/teamspeak/client/3/$TS3CLIENT_VERSION/
 
 	# Go to /home and delete temporary folder
 	echo "Delete temporary folder..."
@@ -125,7 +135,7 @@ StartupNotify=true" > ts3client-$TS3CLIENT_VERSION.desktop
 
 # End
 echo "TeamSpeak 3 Client Version $TS3CLIENT_VERSION successfully"
-echo "installed at location: /opt/teamspeak/ts3client/$TS3CLIENT_VERSION/"
+echo "installed at location: /opt/teamspeak/client/3/$TS3CLIENT_VERSION/"
 echo
 sleep 2
 
