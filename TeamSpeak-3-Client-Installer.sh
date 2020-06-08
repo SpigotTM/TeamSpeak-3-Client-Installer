@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCRIPT_FILE="TeamSpeak-3-Client-Installer.sh"
-INSTALLER_VERSION="1.0.6"
+INSTALLER_VERSION="1.0.7"
 TS3CLIENT_VERSION=$1
 TS3CLIENT_LOGO="https://dl.arrow-systems.de/github/teamspeak-3-client-installer/logo.png"
 
@@ -119,7 +119,7 @@ StartupNotify=true" > ts3client-$TS3CLIENT_VERSION.desktop
 	mv TeamSpeak3-Client-linux_amd64/* temp_$TS3CLIENT_VERSION/
 	
 	
-	mv temp_$TS3CLIENT_VERSION/* /opt/teamspeak/client/3/$TS3CLIENT_VERSION/6
+	mv temp_$TS3CLIENT_VERSION/* /opt/teamspeak/client/3/$TS3CLIENT_VERSION/
 	mv ts3client-$TS3CLIENT_VERSION.desktop /usr/share/applications/ts3client-$TS3CLIENT_VERSION.desktop
 
 	sleep 2
