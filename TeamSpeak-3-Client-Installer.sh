@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCRIPT_FILE="TeamSpeak-3-Client-Installer.sh"
-INSTALLER_VERSION="1.0.7"
+INSTALLER_VERSION="1.1"
 TS3CLIENT_VERSION=$1
 TS3CLIENT_LOGO="https://dl.arrow-systems.de/github/teamspeak-3-client-installer/logo.png"
 
