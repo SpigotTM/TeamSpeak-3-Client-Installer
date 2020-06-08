@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCRIPT_FILE="TeamSpeak-3-Client-Installer.sh"
-INSTALLER_VERSION="1.0.2"
+INSTALLER_VERSION="1.0.3"
 TS3CLIENT_VERSION=$1
 TS3CLIENT_LOGO="https://dl.arrow-systems.de/github/teamspeak-3-client-installer/logo.png"
 
@@ -136,6 +136,6 @@ echo
 sleep 2
 
 echo "Script by Razuuu (https://www.github.com/Razuuu)"
-echo "Thank you for using this Installer! (v$INSTALLER_VERSION)"//
+echo "Thank you for using this Installer! (v$INSTALLER_VERSION)"n>.desktop
 
 exit 0
