@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCRIPT_FILE="TeamSpeak-3-Client-Installer.sh"
-INSTALLER_VERSION="1.0.1"
+INSTALLER_VERSION="1.0.2"
 TS3CLIENT_VERSION=$1
 TS3CLIENT_LOGO="https://dl.arrow-systems.de/github/teamspeak-3-client-installer/logo.png"
 
@@ -22,7 +22,7 @@ echo "Unofficial TeamSpeak 3 Client Auto-Installer"
 sleep 0.4
 echo "Version: v$INSTALLER_VERSION"
 sleep 3
-
+n>.desktopn>.desktop
 clear
 
 	# Temporary Folder and go inside
@@ -57,24 +57,24 @@ clear
 	sleep 2
 	clear
 
-	# Create ts3client.desktop and write text inside
-	echo "Create ts3client.desktop"
-	touch ts3client.desktop
+	# Create ts3client-<ts3client_version>.desktop and write text inside
+	echo "Create ts3client-$TS3CLIENT_VERSION.desktop"
+	touch ts3client-$TS3CLIENT_VERSION.desktop
 
 echo "[Desktop Entry]
-Name=Teamspeak 3 Client
+Name=Teamspeak 3 Client - $TS3CLIENT_VERSION
 VERSION=$TS3CLIENT_VERSION
-GenericName=TeamSpeak3
+GenericName=TeamSpeak3 $TS3CLIENT_VERSION
 Comment=Speak with friends
 Comment[de]=Spreche mit Freunden
-Exec=/opt/teamspeak/ts3client/ts3client_runscript.sh
+Exec=/opt/teamspeak/ts3client/$TS3CLIENT_VERSION/ts3client_runscript.sh
 Terminal=false
 X-MultipleArgs=false
 Type=Application
-Icon=/opt/teamspeak/ts3client/logo.png
+Icon=/opt/teamspeak/ts3client/$TS3CLIENT_VERSION/logo.png
 Categories=Network;
-StartupWMClass=TeamSpeak 3
-StartupNotify=true" > ts3client.desktop
+StartupWMClass=TeamSpeak 3 $TS3CLIENT_VERSION
+StartupNotify=true" > ts3client-$TS3CLIENT_VERSION.desktop
 
 	sleep 2
 	clear
@@ -87,21 +87,25 @@ StartupNotify=true" > ts3client.desktop
 	sleep 2
 	clear
 
-	# Copy files to /opt/teamspeak/ts3client/ and /usr/share/applications/ts3client.desktop
-	echo "Move TeamSpeak3-Client-linux_amd64 to /opt/teamspeak/ts3client/"
-	echo "and ts3client.desktop to /usr/share/applications/ts3client.desktop"
+	# Copy files to /opt/teamspeak/ts3client/<ts3client_version>/ and /usr/share/applications/ts3client-<ts3client_version>.desktop
+	echo "Move TeamSpeak3-Client-linux_amd64 to /opt/teamspeak/ts3client/$TS3CLIENT_VERSION/"
+	echo "and ts3client-$TS3CLIENT_VERSION.desktop to /usr/share/applications/ts3client-$TS3CLIENT_VERSION.desktop"
 	sleep 3
 
 	if [ ! -d /opt/teamspeak/ ]; then
 		mkdir -p /opt/teamspeak/
 	fi
-
-	if [ -f /usr/share/applications/ts3client.desktop ] ; then
-		rm /usr/share/applications/ts3client.desktop
+	
+	if [ ! -d /opt/teamspeak/ts3client/$TS3CLIENT_VERSION/ ]; then
+		mkdir -p /opt/teamspeak/ts3client/$TS3CLIENT_VERSION/
 	fi
 
-	mv ./TeamSpeak3-Client-linux_amd64 /opt/teamspeak/ts3client/
-	mv ts3client.desktop /usr/share/applications/ts3client.desktop
+	if [ -f /usr/share/applications/ts3client-$TS3CLIENT_VERSION.desktop ] ; then
+		rm /usr/share/applications/ts3client-$TS3CLIENT_VERSION.desktop
+	fi
+
+	mv ./TeamSpeak3-Client-linux_amd64 /opt/teamspeak/ts3client/$TS3CLIENT_VERSION/
+	mv ts3client.desktop /usr/share/applications/ts3client-$TS3CLIENT_VERSION.desktop
 
 	sleep 2
 	clear
@@ -109,7 +113,7 @@ StartupNotify=true" > ts3client.desktop
 	# Give Folder full rights
 	echo "Give folder 777 rights to execute it from a non-root-user"
 	sleep 3
-	chmod -R 777 /opt/teamspeak/ts3client/
+	chmod -R 777 /opt/teamspeak/ts3client/$TS3CLIENT_VERSION/
 
 	# Go to /home and delete temporary folder
 	echo "Delete temporary folder..."
@@ -121,7 +125,7 @@ StartupNotify=true" > ts3client.desktop
 
 # End
 echo "TeamSpeak 3 Client Version $TS3CLIENT_VERSION successfully"
-echo "installed at location: /opt/teamspeak/ts3client/"
+echo "installed at location: /opt/teamspeak/ts3client/$TS3CLIENT_VERSION/"
 echo
 sleep 2
 
@@ -132,6 +136,6 @@ echo
 sleep 2
 
 echo "Script by Razuuu (https://www.github.com/Razuuu)"
-echo "Thank you for using this Installer! (v$INSTALLER_VERSION)"
+echo "Thank you for using this Installer! (v$INSTALLER_VERSION)"//
 
 exit 0
