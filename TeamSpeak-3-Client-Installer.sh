@@ -1,18 +1,23 @@
 #!/bin/bash
 
-SCRIPT_FILE="TeamSpeak-3-Client-Installer.sh"
 INSTALLER_VERSION="1.1.0-RELEASE"
 TS3CLIENT_VERSION=$1
 TS3CLIENT_LOGO="https://dl.arrow-systems.de/github/teamspeak-3-client-installer/logo.png"
+ARCHITECTURE="dpkg --print-architecture"
 
 if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root!"
    exit 1
 fi
 
-if [ -z $1 ]; then
-   echo "./$SCRIPT_FILE <TS3Client-Version>"
-   echo "Stable: 3.5.3"
+#if [ !$ARCHITECTURE = "amd64" ] || [ !$ARCHITECTURE = "i386" ]; then
+#	echo "Your architecture are not supported by TeamSpeak"
+#	exit 1
+#fi
+
+if [ -z $TS3CLIENT_VERSION ]; then
+   echo "./`basename $0` <TS3Client-Version>"
+   echo "Stable: 3.5.3 (2020.06.10)"
    exit 1
 fi
 
@@ -35,9 +40,21 @@ clear
 	clear
 
 	# Download File
-	echo "Download file TeamSpeak3-Client-linux_amd64-$TS3CLIENT_VERSION.run"
+	echo "Download file TeamSpeak3-Client-linux_$ARCHITECTURE-$TS3CLIENT_VERSION.run"
 	sleep 3
-	wget https://files.teamspeak-services.com/releases/client/$TS3CLIENT_VERSION/TeamSpeak3-Client-linux_amd64-$TS3CLIENT_VERSION.run
+	
+	if [ $ARCHITECTURE == "amd64" ]; then
+
+		# download amd64
+		wget https://files.teamspeak-services.com/releases/client/$TS3CLIENT_VERSION/TeamSpeak3-Client-linux_amd64-$TS3CLIENT_VERSION.run
+
+		else
+
+			if [ $ARCHITECTURE == "i386" ]; then
+				# download x86
+				wget https://files.teamspeak-services.com/releases/client/$TS3CLIENT_VERSION/TeamSpeak3-Client-linux_x86-$TS3CLIENT_VERSION.run
+			fi
+	fi
 
 	sleep 2
 	clear
@@ -45,14 +62,14 @@ clear
 	# Give file execute rights and run
 	echo "Give File execute rights..."
 	sleep 3
-	chmod +x TeamSpeak3-Client-linux_amd64-$TS3CLIENT_VERSION.run
+	chmod +x TeamSpeak3-Client-linux_$ARCHITECTURE-$TS3CLIENT_VERSION.run
 
 	sleep 2
 	clear
 
 	echo "Run file, please follow instructions!"
 	sleep 3
-	bash TeamSpeak3-Client-linux_amd64-$TS3CLIENT_VERSION.run
+	bash TeamSpeak3-Client-linux_$ARCHITECTURE-$TS3CLIENT_VERSION.run
 
 	sleep 2
 	clear
@@ -80,19 +97,19 @@ StartupNotify=true" > ts3client-$TS3CLIENT_VERSION.desktop
 	clear
 
 	# Download Logo
-	echo "Download logo and move it to TeamSpeak3-Client-linux_amd64..."
+	echo "Download logo and move it to TeamSpeak3-Client-linux_$ARCHITECTURE..."
 	sleep 3
-	wget $TS3CLIENT_LOGO -O TeamSpeak3-Client-linux_amd64/logo.png
+	wget $TS3CLIENT_LOGO -O TeamSpeak3-Client-linux_$ARCHITECTURE/logo.png
 
 	sleep 2
 	clear
 
 	# Copy files to /opt/teamspeak/client/3/<ts3client_version>/ and /usr/share/applications/ts3client-<ts3client_version>.desktop
-	echo "Move TeamSpeak3-Client-linux_amd64 to /opt/teamspeak/client/3/$TS3CLIENT_VERSION/"
+	echo "Move TeamSpeak3-Client-linux_$ARCHITECTURE to /opt/teamspeak/client/3/$TS3CLIENT_VERSION/"
 	echo "and ts3client-$TS3CLIENT_VERSION.desktop to /usr/share/applications/ts3client-$TS3CLIENT_VERSION.desktop"
 	sleep 3
 
-	# if shit start
+	# if start
 	if [ ! -d /opt/teamspeak/ ]; then
 		mkdir -p /opt/teamspeak/
 	fi
@@ -112,12 +129,10 @@ StartupNotify=true" > ts3client-$TS3CLIENT_VERSION.desktop
 	if [ -f /usr/share/applications/ts3client-$TS3CLIENT_VERSION.desktop ]; then
 		rm /usr/share/applications/ts3client-$TS3CLIENT_VERSION.desktop
 	fi
-	# if shit stop 
+	# if stop 
 
-	# fix FUCKING not changing folder v2
 	mkdir -p temp_$TS3CLIENT_VERSION
-	mv TeamSpeak3-Client-linux_amd64/* temp_$TS3CLIENT_VERSION/
-	
+	mv TeamSpeak3-Client-linux_$ARCHITECTURE/* temp_$TS3CLIENT_VERSION/
 	
 	mv temp_$TS3CLIENT_VERSION/* /opt/teamspeak/client/3/$TS3CLIENT_VERSION/
 	mv ts3client-$TS3CLIENT_VERSION.desktop /usr/share/applications/ts3client-$TS3CLIENT_VERSION.desktop
