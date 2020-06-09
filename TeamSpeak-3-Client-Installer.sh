@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCRIPT_FILE="TeamSpeak-3-Client-Installer.sh"
-INSTALLER_VERSION="1.1"
+INSTALLER_VERSION="1.1.0-RELEASE"
 TS3CLIENT_VERSION=$1
 TS3CLIENT_LOGO="https://dl.arrow-systems.de/github/teamspeak-3-client-installer/logo.png"
 
@@ -22,7 +22,7 @@ echo "Unofficial TeamSpeak 3 Client Auto-Installer"
 sleep 0.4
 echo "Version: v$INSTALLER_VERSION"
 sleep 3
-n>.desktopn>.desktop
+
 clear
 
 	# Temporary Folder and go inside
