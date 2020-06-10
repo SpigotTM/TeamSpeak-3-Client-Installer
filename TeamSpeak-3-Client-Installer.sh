@@ -44,12 +44,9 @@ clear
 	sleep 3
 	
 	if [ $ARCHITECTURE == "amd64" ]; then
-
 		# download amd64
 		wget https://files.teamspeak-services.com/releases/client/$TS3CLIENT_VERSION/TeamSpeak3-Client-linux_amd64-$TS3CLIENT_VERSION.run
-
 		else
-
 			if [ $ARCHITECTURE == "i386" ]; then
 				# download x86
 				wget https://files.teamspeak-services.com/releases/client/$TS3CLIENT_VERSION/TeamSpeak3-Client-linux_x86-$TS3CLIENT_VERSION.run
@@ -62,14 +59,28 @@ clear
 	# Give file execute rights and run
 	echo "Give File execute rights..."
 	sleep 3
-	chmod +x TeamSpeak3-Client-linux_$ARCHITECTURE-$TS3CLIENT_VERSION.run
+	
+	if [ $ARCHITECTURE == "amd64" ]; then
+		chmod +x TeamSpeak3-Client-linux_amd64-$TS3CLIENT_VERSION.run
+		else
+			if [ $ARCHITECTURE == "i386" ]; then
+				chmod +x TeamSpeak3-Client-linux_x86-$TS3CLIENT_VERSION.run
+			fi
+	fi
 
 	sleep 2
 	clear
 
 	echo "Run file, please follow instructions!"
 	sleep 3
-	bash TeamSpeak3-Client-linux_$ARCHITECTURE-$TS3CLIENT_VERSION.run
+
+	if [ $ARCHITECTURE == "amd64" ]; then
+		bash TeamSpeak3-Client-linux_$ARCHITECTURE-$TS3CLIENT_VERSION.run
+		else
+			if [ $ARCHITECTURE == "i386" ]; then
+				bash TeamSpeak3-Client-linux_x86-$TS3CLIENT_VERSION.run
+			fi
+	fi
 
 	sleep 2
 	clear
