@@ -3,7 +3,7 @@
 INSTALLER_VERSION="1.1.0-RELEASE"
 TS3CLIENT_VERSION=$1
 TS3CLIENT_LOGO="https://dl.arrow-systems.de/github/teamspeak-3-client-installer/logo.png"
-ARCHITECTURE="dpkg --print-architecture"
+ARCHITECTURE="amd64" # i hope yall have amd64 bcuz i dont fix that i386 shit, lol
 
 if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root!"
