@@ -35,6 +35,8 @@ fi
 # AMD64 START
 amd64() {
 
+        clear
+
 	start_text
 
         create_temporary_folder
@@ -133,6 +135,8 @@ StartupNotify=true" > ts3client-$TS3CLIENT_VERSION-amd64.desktop
 
 # I386 START
 i386() {
+
+        clear
 
 	start_text
         
