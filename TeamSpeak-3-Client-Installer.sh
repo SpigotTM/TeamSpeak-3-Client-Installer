@@ -126,6 +126,8 @@ StartupNotify=true" > ts3client-$TS3CLIENT_VERSION-amd64.desktop
 
 	delete_temporary_folder
 
+	sleep2_clear
+
 	echo "TeamSpeak 3 Client Version $TS3CLIENT_VERSION successfully"
 	echo "installed at location: /opt/teamspeak/client/3/amd64/$TS3CLIENT_VERSION/"
 
@@ -226,6 +228,8 @@ StartupNotify=true" > ts3client-$TS3CLIENT_VERSION-i386.desktop
 	sleep2_clear
 
 	delete_temporary_folder
+
+	sleep2_clear
 
 	echo "TeamSpeak 3 Client Version $TS3CLIENT_VERSION successfully"
 	echo "installed at location: /opt/teamspeak/client/3/i386/$TS3CLIENT_VERSION/"
