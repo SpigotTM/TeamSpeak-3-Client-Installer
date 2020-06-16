@@ -7,14 +7,15 @@
 #
 # Contact:
 #   > Mail: joshua@arrow-systems.de
-#	> Teamspeak: ts.arrow-systems.de
+#   > TeamSpeak: ts.arrow-systems.de
 #   > GitHub: Razuuu
+#
 #
 # Copyright (c) 2020 Razuuu
 #
 #
 
-INSTALLER_VERSION="1.2-UNSTABLE" # short version
+INSTALLER_VERSION="1.2-UNSTABLE" # version
 STABLE_TS3CLIENT_VERSION="3.5.3 (2020.06.15)" # stable version
 TS3CLIENT_VERSION=$1 # arg1
 TS3CLIENT_LOGO="https://dl.arrow-systems.de/github/teamspeak-3-client-installer/logo.png" # download logo
@@ -35,6 +36,10 @@ fi
 amd64() {
 
 	start_text
+
+        create_temporary_folder
+
+        sleep2_clear
 
 	# Download File | amd64
 	echo "Download file TeamSpeak3-Client-linux_amd64-$TS3CLIENT_VERSION.run"
@@ -130,6 +135,10 @@ StartupNotify=true" > ts3client-$TS3CLIENT_VERSION-amd64.desktop
 i386() {
 
 	start_text
+        
+        create_temporary_folder
+
+        sleep2_clear
 
 	# Download File | i386
 	echo "Download file TeamSpeak3-Client-linux_x86-$TS3CLIENT_VERSION.run"
@@ -296,5 +305,5 @@ if [ $ARCHITECTURE = "amd64" ]; then
 						echo
 						echo "Supported architectures:"
 						echo "> amd64"
-						echo "> i386/x86"
+						echo "> i386"
 fi
