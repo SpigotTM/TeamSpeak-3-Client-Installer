@@ -15,7 +15,7 @@
 #
 #
 
-INSTALLER_VERSION="1.2-UNSTABLE" # version
+INSTALLER_VERSION="1.3-UNSTABLE" # version
 STABLE_TS3CLIENT_VERSION="3.5.3 (2020.06.15)" # stable version
 TS3CLIENT_VERSION=$1 # arg1
 TS3CLIENT_LOGO="https://dl.arrow-systems.de/github/teamspeak-3-client-installer/logo.png" # download logo
