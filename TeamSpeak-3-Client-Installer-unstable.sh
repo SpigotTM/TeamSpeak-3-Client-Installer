@@ -15,8 +15,8 @@
 #
 #
 
-INSTALLER_VERSION="1.4-UNSTABLE" # version
-STABLE_TS3CLIENT_VERSION="3.5.3 (2020.06.16)" # stable version
+INSTALLER_VERSION="1.4-UNSTABLE" # installer version
+STABLE_TS3CLIENT_VERSION="3.5.3 (2020.07.14)" # stable ts3 version
 TS3CLIENT_VERSION=$1 # arg1
 TS3CLIENT_LOGO="https://dl.arrow-systems.de/github/teamspeak-3-client-installer/logo.png" # download logo
 ARCHITECTURE=$(dpkg --print-architecture) # architecture
@@ -296,9 +296,11 @@ delete_temporary_folder() {
 }
 
 end() {
-echo
+clear
+
 sleep 2
 
+echo
 echo "Following Websites using:"
 echo "files.teamspeak-services.com, dl.arrow-systems.de"
 echo
@@ -306,6 +308,7 @@ sleep 2
 
 echo "Script by Razuuu (https://www.github.com/Razuuu)"
 echo "Thank you for using this Installer! (v$INSTALLER_VERSION)"
+echo
 
 exit 0
 }
