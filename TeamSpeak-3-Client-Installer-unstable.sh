@@ -39,6 +39,10 @@ amd64() {
 
 	start_text
 
+	install_packages
+	
+	sleep2_clear
+	
         create_temporary_folder
 
         sleep2_clear
@@ -88,7 +92,7 @@ StartupNotify=true" > ts3client-$TS3CLIENT_VERSION-amd64.desktop
 	# Download Logo | amd64
 	echo "Download logo and move it to TeamSpeak3-Client-linux_amd64..."
 	sleep 3
-	wget $TS3CLIENT_LOGO -O TeamSpeak3-Client-linux_amd64/logo.png
+	wget --user github-razuuu-ts3installer --password hackmegithub $TS3CLIENT_LOGO -O TeamSpeak3-Client-linux_amd64/logo.png
 
 	sleep2_clear
 
@@ -139,7 +143,11 @@ i386() {
         clear
 
 	start_text
-        
+
+	install_packages
+	
+	sleep2_clear
+	
         create_temporary_folder
 
         sleep2_clear
@@ -189,7 +197,7 @@ StartupNotify=true" > ts3client-$TS3CLIENT_VERSION-i386.desktop
 	# Download Logo | i386
 	echo "Download logo and move it to TeamSpeak3-Client-linux_x86..."
 	sleep 3
-	wget $TS3CLIENT_LOGO -O TeamSpeak3-Client-linux_x86/logo.png
+	wget --user github-razuuu-ts3installer --password hackmegithub $TS3CLIENT_LOGO -O TeamSpeak3-Client-linux_amd64/logo.png
 
 	sleep2_clear
 
@@ -240,6 +248,18 @@ sleep 0.4
 echo "Version: v$INSTALLER_VERSION"
 sleep 3
 clear
+}
+
+install_packages() {
+echo "check if wget already installed on this system"
+sleep 2
+	if [[ ! -f /bin/wget ]]; then
+		echo "wget not found, lets install"
+		sleep 2
+		apt install wget -y
+	else
+		echo "wget found, no install needed"
+fi
 }
 
 sleep2_clear() {
