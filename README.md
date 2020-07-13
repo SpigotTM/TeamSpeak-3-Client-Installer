@@ -1,7 +1,15 @@
 # TeamSpeak-3-Client-Installer
 Unofficial TeamSpeak 3 Client Installer for Version 3.5.3
 ###
+For Debian, and Debian based Distro.
+###
 Run this installer with root
+###
+wget and curl needed!!!
+###
+```
+apt install wget curl -y
+```
 ###
 ### Copy paste commands
 ###
