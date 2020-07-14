@@ -15,8 +15,8 @@
 #
 #
 
-INSTALLER_VERSION="1.3-RELEASE" # version
-STABLE_TS3CLIENT_VERSION="3.5.3 (2020.06.16)" # stable version
+INSTALLER_VERSION="1.4-RELEASE" # installer version
+STABLE_TS3CLIENT_VERSION="3.5.3 (2020.07.14)" # stable ts3 version
 TS3CLIENT_VERSION=$1 # arg1
 TS3CLIENT_LOGO="https://dl.arrow-systems.de/github/teamspeak-3-client-installer/logo.png" # download logo
 ARCHITECTURE=$(dpkg --print-architecture) # architecture
@@ -35,15 +35,9 @@ fi
 # AMD64 START
 amd64() {
 
-        clear
+        start_real
 
-	start_text
-
-        create_temporary_folder
-
-        sleep2_clear
-
-	# Download File | amd64
+	# Download file | amd64
 	echo "Download file TeamSpeak3-Client-linux_amd64-$TS3CLIENT_VERSION.run"
 	sleep 3
 	wget https://files.teamspeak-services.com/releases/client/$TS3CLIENT_VERSION/TeamSpeak3-Client-linux_amd64-$TS3CLIENT_VERSION.run
@@ -51,7 +45,7 @@ amd64() {
 	sleep2_clear
 
 	# Give file execute rights and run | amd64
-	echo "Give File execute rights..."
+	echo "Give file execute rights..."
 	sleep 3
 	chmod +x TeamSpeak3-Client-linux_amd64-$TS3CLIENT_VERSION.run
 
@@ -85,10 +79,7 @@ StartupNotify=true" > ts3client-$TS3CLIENT_VERSION-amd64.desktop
 
 	sleep2_clear
 
-	# Download Logo | amd64
-	echo "Download logo and move it to TeamSpeak3-Client-linux_amd64..."
-	sleep 3
-	wget $TS3CLIENT_LOGO -O TeamSpeak3-Client-linux_amd64/logo.png
+	download_logo
 
 	sleep2_clear
 
@@ -117,7 +108,7 @@ StartupNotify=true" > ts3client-$TS3CLIENT_VERSION-amd64.desktop
 
 	sleep2_clear
 
-	# Give Folder full rights | amd64
+	# Give folder full rights | amd64
 	echo "Give folder 777 rights to execute it from a non-root-user"
 	sleep 3
 	chmod -R 777 /opt/teamspeak/client/3/amd64/$TS3CLIENT_VERSION/
@@ -125,8 +116,6 @@ StartupNotify=true" > ts3client-$TS3CLIENT_VERSION-amd64.desktop
 	sleep2_clear
 
 	delete_temporary_folder
-
-	sleep2_clear
 
 	echo "TeamSpeak 3 Client Version $TS3CLIENT_VERSION successfully"
 	echo "installed at location: /opt/teamspeak/client/3/amd64/$TS3CLIENT_VERSION/"
@@ -138,15 +127,9 @@ StartupNotify=true" > ts3client-$TS3CLIENT_VERSION-amd64.desktop
 # I386 START
 i386() {
 
-        clear
+        start_real
 
-	start_text
-        
-        create_temporary_folder
-
-        sleep2_clear
-
-	# Download File | i386
+	# Download file | i386
 	echo "Download file TeamSpeak3-Client-linux_x86-$TS3CLIENT_VERSION.run"
 	sleep 3
 	wget https://files.teamspeak-services.com/releases/client/$TS3CLIENT_VERSION/TeamSpeak3-Client-linux_x86-$TS3CLIENT_VERSION.run
@@ -188,10 +171,7 @@ StartupNotify=true" > ts3client-$TS3CLIENT_VERSION-i386.desktop
 
 	sleep2_clear
 
-	# Download Logo | i386
-	echo "Download logo and move it to TeamSpeak3-Client-linux_x86..."
-	sleep 3
-	wget $TS3CLIENT_LOGO -O TeamSpeak3-Client-linux_x86/logo.png
+	download_logo
 
 	sleep2_clear
 
@@ -220,7 +200,7 @@ StartupNotify=true" > ts3client-$TS3CLIENT_VERSION-i386.desktop
 
 	sleep2_clear
 
-	# Give Folder full rights | i386
+	# Give folder full rights | i386
 	echo "Give folder 777 rights to execute it from a non-root-user"
 	sleep 3
 	chmod -R 777 /opt/teamspeak/client/3/i386/$TS3CLIENT_VERSION/
@@ -229,14 +209,26 @@ StartupNotify=true" > ts3client-$TS3CLIENT_VERSION-i386.desktop
 
 	delete_temporary_folder
 
-	sleep2_clear
-
 	echo "TeamSpeak 3 Client Version $TS3CLIENT_VERSION successfully"
 	echo "installed at location: /opt/teamspeak/client/3/i386/$TS3CLIENT_VERSION/"
 
 	end
 }
 # I386 STOP
+
+start_real() {
+clear
+
+	start_text
+
+	install_packages
+	
+	sleep2_clear
+	
+        create_temporary_folder
+
+        sleep2_clear
+}
 
 start_text() {
 echo "Unofficial TeamSpeak 3 Client Auto-Installer"
@@ -246,9 +238,28 @@ sleep 3
 clear
 }
 
+install_packages() {
+echo "check if wget already installed on this system"
+sleep 2
+	if [[ ! -f /bin/wget ]]; then
+		echo "wget not found, lets install"
+		sleep 2
+		apt install wget -y
+	else
+		echo "wget found, no install needed"
+fi
+}
+
 sleep2_clear() {
 	sleep 2
 	clear
+}
+
+download_logo() {
+	# Download logo | amd64
+	echo "Download logo and move it to TeamSpeak3-Client-linux_amd64..."
+	sleep 3
+	wget --user github-razuuu-ts3installer --password hackmegithub $TS3CLIENT_LOGO -O TeamSpeak3-Client-linux_amd64/logo.png
 }
 
 create_temporary_folder() {
@@ -285,9 +296,11 @@ delete_temporary_folder() {
 }
 
 end() {
-echo
+clear
+
 sleep 2
 
+echo
 echo "Following Websites using:"
 echo "files.teamspeak-services.com, dl.arrow-systems.de"
 echo
@@ -295,6 +308,7 @@ sleep 2
 
 echo "Script by Razuuu (https://www.github.com/Razuuu)"
 echo "Thank you for using this Installer! (v$INSTALLER_VERSION)"
+echo
 
 exit 0
 }
