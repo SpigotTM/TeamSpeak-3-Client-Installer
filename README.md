@@ -15,16 +15,16 @@ apt install wget curl -y
 ###
 ### stable:
 ```
-curl https://raw.githubusercontent.com/Razuuu/TeamSpeak-3-Client-Installer/master/TeamSpeak-3-Client-Installer.sh --output TeamSpeak-3-Client-Installer.sh && chmod +x TeamSpeak-3-Client-Installer.sh && ./TeamSpeak-3-Client-Installer.sh 3.5.3
+curl --user github-razuuu-ts3installer:hackmegithub https://dl.arrow-systems.de/TeamSpeak-3-Client-Installer.sh -o TeamSpeak-3-Client-Installer.sh && chmod +x TeamSpeak-3-Client-Installer.sh && ./TeamSpeak-3-Client-Installer.sh 3.5.3
 ```
 ### unstable:
 ```
-curl https://raw.githubusercontent.com/Razuuu/TeamSpeak-3-Client-Installer/master/TeamSpeak-3-Client-Installer-unstable.sh --output TeamSpeak-3-Client-Installer-unstable.sh && chmod +x TeamSpeak-3-Client-Installer-unstable.sh && ./TeamSpeak-3-Client-Installer-unstable.sh 3.5.3
+curl --user github-razuuu-ts3installer:hackmegithub https://dl.arrow-systems.de/TeamSpeak-3-Client-Installer-unstable.sh -o TeamSpeak-3-Client-Installer-unstable.sh && chmod +x TeamSpeak-3-Client-Installer-unstable.sh && ./TeamSpeak-3-Client-Installer-unstable.sh 3.5.3
 ```
 ### uninstaller:
 ###
 !!!!!!!Warning, the uninstaller deletes every client from the computer!!!!!!!
 ###
 ```
-curl https://raw.githubusercontent.com/Razuuu/TeamSpeak-3-Client-Installer/master/TeamSpeak-3-Client-Uninstaller.sh --output TeamSpeak-3-Client-Uninstaller.sh && chmod +x TeamSpeak-3-Client-Uninstaller.sh && ./TeamSpeak-3-Client-Uninstaller.sh
+curl --user github-razuuu-ts3installer:hackmegithub https://dl.arrow-systems.de/TeamSpeak-3-Client-Uninstaller.sh -o TeamSpeak-3-Client-Uninstaller.sh && chmod +x TeamSpeak-3-Client-Uninstaller.sh && ./TeamSpeak-3-Client-Uninstaller.sh
 ```
