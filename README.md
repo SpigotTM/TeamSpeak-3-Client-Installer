@@ -26,5 +26,5 @@ curl https://raw.githubusercontent.com/Razuuu/TeamSpeak-3-Client-Installer/maste
 !!!!!!!Warning, the uninstaller deletes every client from the computer!!!!!!!
 ###
 ```
-curl https://raw.githubusercontent.com/Razuuu/TeamSpeak-3-Client-Installer/master/TeamSpeak-3-Client-Uninstaller.sh --output TeamSpeak-3-Client-Installer-Uninstaller.sh && chmod +x TeamSpeak-3-Client-Uninstaller.sh && ./TeamSpeak-3-Client-Uninstaller.sh
+curl https://raw.githubusercontent.com/Razuuu/TeamSpeak-3-Client-Installer/master/TeamSpeak-3-Client-Uninstaller.sh --output TeamSpeak-3-Client-Uninstaller.sh && chmod +x TeamSpeak-3-Client-Uninstaller.sh && ./TeamSpeak-3-Client-Uninstaller.sh
 ```
