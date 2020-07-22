@@ -19,7 +19,7 @@ INSTALLER_VERSION="1.4-RELEASE" # installer version
 STABLE_TS3CLIENT_VERSION="3.5.3 (2020.07.14)" # stable ts3 version
 TS3CLIENT_VERSION=$1 # arg1
 TS3CLIENT_LOGO="https://dl.arrow-systems.de/github/teamspeak-3-client-installer/logo.png" # download logo
-ARCHITECTURE=$(dpkg --print-architecture) # architecture
+ARCHITECTURE=$(dpkg --print-architecture) # linux architecture
 
 if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root!"
